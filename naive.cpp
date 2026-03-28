@@ -8,13 +8,12 @@ using namespace std;
 int dr[] = {0, 0, 1, -1};
 int dc[] = {1, -1, 0, 0};
 
-void naive(const vector<vector<char>>& grid, const string& word) {
+void naive(const vector<vector<char>>& grid, const string& word,int& compare) {
     int rows = grid.size();
     int cols = grid[0].size();
     int len = word.size();
 
     vector<string> ans;
-    int comparisons = 0;
 
     for (int r = 0; r < rows; ++r) {
         for (int c = 0; c < cols; ++c) {
@@ -26,7 +25,7 @@ void naive(const vector<vector<char>>& grid, const string& word) {
 
                     if (curr_r < 0 || curr_r >= rows || curr_c < 0 || curr_c >= cols) break;
 
-                    comparisons++;
+                    compare++;
                     if (grid[curr_r][curr_c] != word[k]) break;
                 }
 
@@ -52,7 +51,6 @@ void naive(const vector<vector<char>>& grid, const string& word) {
         }
         cout << ";\n";
     }
-    cout << "Comparisons: " << comparisons << '\n';
 }
 
 int main() {
@@ -68,10 +66,12 @@ int main() {
 
     int q;
     cin >> q;
+    int compare = 0;
     while (q--) {
         string p;
         cin >> p;
-        naive(grid, p);
+        naive(grid, p,compare);
     }
+    cout<<"Comparison: "<<compare;
     return 0;
 }
