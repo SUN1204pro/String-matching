@@ -2,71 +2,66 @@
 #include <vector>
 #include <string>
 #include <queue>
-#include <map>
 using namespace std;
 
-struct Result {
-    int r1, c1, r2, c2;
-};
-
-
-
 struct TrieNode {
-    TrieNode* children[26];
-    TrieNode* fail;
-    vector<string> matched_words;
+    int children[26];
+    int fail;
+    vector<int> matched_indices;
 
     TrieNode() {
-        for (int i = 0; i < 26; i++) children[i] = nullptr;
-        fail = nullptr;
+        for (int i = 0; i < 26; i++) children[i] = -1;
+        fail = -1;
     }
 };
 
-void insert(const string& word, TrieNode* root) {
-    TrieNode* curr = root;
+vector<TrieNode> trie;
+
+void insert(const string& word, int word_index) {
+    int curr = 0;
     for (char c : word) {
         int index = c - 'a';
-        if (curr->children[index] == nullptr) {
-            curr->children[index] = new TrieNode();
+        if (trie[curr].children[index] == -1) {
+            trie[curr].children[index] = trie.size();
+            trie.push_back(TrieNode());
         }
-        curr = curr->children[index];
+        curr = trie[curr].children[index];
     }
-    curr->matched_words.push_back(word);
+    trie[curr].matched_indices.push_back(word_index);
 }
 
-void build_failure_links(TrieNode* root) {
-    queue<TrieNode*> q;
-    root->fail = root;
+void build_failure_links() {
+    queue<int> q;
+    trie[0].fail = 0;
 
     for (int i = 0; i < 26; i++) {
-        if (root->children[i] != nullptr) {
-            root->children[i]->fail = root;
-            q.push(root->children[i]);
+        if (trie[0].children[i] != -1) {
+            trie[trie[0].children[i]].fail = 0;
+            q.push(trie[0].children[i]);
         }
     }
 
-    // BFS IMPLEMENT
     while (!q.empty()) {
-        TrieNode* u = q.front();
+        int u = q.front();
         q.pop();
 
         for (int i = 0; i < 26; i++) {
-            if (u->children[i] != nullptr) {
-                TrieNode* v = u->children[i];
-                TrieNode* f = u->fail;
+            if (trie[u].children[i] != -1) {
+                int v = trie[u].children[i];
+                int f = trie[u].fail;
 
-                while (f != root && f->children[i] == nullptr) {
-                    f = f->fail;
+                while (f != 0 && trie[f].children[i] == -1) {
+                    f = trie[f].fail;
                 }
 
-                if (f->children[i] != nullptr) {
-                    v->fail = f->children[i];
+                if (trie[f].children[i] != -1) {
+                    trie[v].fail = trie[f].children[i];
                 } else {
-                    v->fail = root;
+                    trie[v].fail = 0;
                 }
 
-                for (const string& w : v->fail->matched_words) {
-                    v->matched_words.push_back(w);
+                for (int idx : trie[trie[v].fail].matched_indices) {
+                    trie[v].matched_indices.push_back(idx);
                 }
 
                 q.push(v);
@@ -75,51 +70,44 @@ void build_failure_links(TrieNode* root) {
     }
 }
 
-
-
-void free_memory(TrieNode* node) {
-    if (node == nullptr) return;
-    for (int i = 0; i < 26; i++) {
-        if (node->children[i] != nullptr) {
-            free_memory(node->children[i]);
-        }
-    }
-    delete node;
-}
-
-void Aho_Corasick_SEARCH(const string& text, const vector<pair<int, int>>& coords, TrieNode* root, map<string, vector<Result>>& results,int& comparison) {
-    TrieNode* curr = root;
+void Aho_Corasick_SEARCH(const string& text, const vector<pair<int, int>>& coords, const vector<string>& queries, vector<string>& ans, int& comparison) {
+    int curr = 0;
     for (int i = 0; i < text.length(); i++) {
         int index = text[i] - 'a';
         comparison++;
-        while (curr != root && curr->children[index] == nullptr) {
-            curr = curr->fail;
+
+        while (curr != 0 && trie[curr].children[index] == -1) {
+            curr = trie[curr].fail;
             comparison++;
         }
 
-        if (curr->children[index] != nullptr) {
-            curr = curr->children[index];
+        if (trie[curr].children[index] != -1) {
+            curr = trie[curr].children[index];
         }
 
-        for (const string& word : curr->matched_words) {
-            int len = word.length();
+        for (int word_idx : trie[curr].matched_indices) {
+            int len = queries[word_idx].length();
             int start_idx = i - len + 1;
             int end_idx = i;
 
-            results[word].push_back({
-                coords[start_idx].first, coords[start_idx].second,
-                coords[end_idx].first, coords[end_idx].second
-            });
+            string result = "(" + to_string(coords[start_idx].first) + ", " + to_string(coords[start_idx].second) + ") -> " +
+                                      "(" + to_string(coords[end_idx].first) + ", " + to_string(coords[end_idx].second) + ")";
+
+            if (!ans[word_idx].empty()) {
+                ans[word_idx] += "; ";
+            }
+            ans[word_idx] += result;
         }
     }
 }
 
-void Aho_Corasick(const vector<vector<char>>& grid, TrieNode* root, const vector<string>& queries) {
+void Aho_Corasick(const vector<vector<char>>& grid, const vector<string>& queries) {
     int rows = grid.size();
     if (rows == 0) return;
     int cols = grid[0].size();
     int comparison = 0;
-    map<string, vector<Result>> results;
+
+    vector<string> ans(queries.size(), "");
 
     for (int r = 0; r < rows; r++) {
         string text_fwd = "", text_rev = "";
@@ -131,8 +119,8 @@ void Aho_Corasick(const vector<vector<char>>& grid, TrieNode* root, const vector
             text_rev += grid[r][cols - 1 - c];
             coords_rev.push_back({r, cols - 1 - c});
         }
-        Aho_Corasick_SEARCH(text_fwd, coords_fwd, root, results,comparison);
-        Aho_Corasick_SEARCH(text_rev, coords_rev, root, results,comparison);
+        Aho_Corasick_SEARCH(text_fwd, coords_fwd, queries, ans, comparison);
+        Aho_Corasick_SEARCH(text_rev, coords_rev, queries, ans, comparison);
     }
 
     for (int c = 0; c < cols; c++) {
@@ -145,29 +133,27 @@ void Aho_Corasick(const vector<vector<char>>& grid, TrieNode* root, const vector
             text_rev += grid[rows - 1 - r][c];
             coords_rev.push_back({rows - 1 - r, c});
         }
-        Aho_Corasick_SEARCH(text_fwd, coords_fwd, root, results,comparison);
-        Aho_Corasick_SEARCH(text_rev, coords_rev, root, results,comparison);
+        Aho_Corasick_SEARCH(text_fwd, coords_fwd, queries, ans, comparison);
+        Aho_Corasick_SEARCH(text_rev, coords_rev, queries, ans, comparison);
     }
 
-    for (const string& w : queries) {
-        cout << w << ": ";
-        if (results[w].empty()) {
+    for (size_t i = 0; i < queries.size(); i++) {
+        cout << queries[i] << ": ";
+        if (ans[i].empty()) {
             cout << "not found\n";
         } else {
-            for (size_t i = 0; i < results[w].size(); i++) {
-                cout << "(" << results[w][i].r1 << ", " << results[w][i].c1 << ") -> "
-                     << "(" << results[w][i].r2 << ", " << results[w][i].c2 << ")";
-                if (i < results[w].size() - 1) cout << "; ";
-            }
-            cout << ";\n";
+            cout << ans[i] << ";\n";
         }
     }
     cout << "Comparisons: " << comparison << '\n';
-
 }
+
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
     int n, m;
-    cin>>n>>m;
+    cin >> n >> m;
 
     vector<vector<char>> grid(n, vector<char>(m));
     for (int i = 0; i < n; i++) {
@@ -179,20 +165,17 @@ int main() {
     int q;
     cin >> q;
 
-    TrieNode* root = new TrieNode();
+    trie.push_back(TrieNode());
 
     vector<string> queries(q);
     for(int i = 0; i < q; i++) {
         cin >> queries[i];
-        insert(queries[i], root);
+        insert(queries[i], i);
     }
 
-    build_failure_links(root);
+    build_failure_links();
 
-    for (auto w : queries) {
-        Aho_Corasick(grid, root,queries);
-    }
+    Aho_Corasick(grid, queries);
 
-    free_memory(root);
     return 0;
 }
