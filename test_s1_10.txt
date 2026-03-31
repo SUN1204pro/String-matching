@@ -1,0 +1,17 @@
+10 10
+e g i c r a d h g c
+c v g i p p b p j b
+k g n b x u w q q m
+a g o p p z p o h o
+y m i p o d u f x p
+a y j u r y m q d g
+y z n c m b d e w c
+c t a u e l d r b l
+f v a u z o m b k v
+b y r n v c w e b m
+5
+zpoh
+vggmy
+lmr
+hbrydth
+yysde
