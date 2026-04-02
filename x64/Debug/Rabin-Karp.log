@@ -1,0 +1,26 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(538,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Rabin-Karp.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  AhoCorasick.cpp
+C:\Users\Duy\OneDrive\Desktop\DSA (LT)\String Matching Project\Rabin-Karp\Rabin-Karp\AhoCorasick.cpp(26,51): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Duy\OneDrive\Desktop\DSA (LT)\String Matching Project\Rabin-Karp\Rabin-Karp\AhoCorasick.cpp(91,21): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Duy\OneDrive\Desktop\DSA (LT)\String Matching Project\Rabin-Karp\Rabin-Karp\AhoCorasick.cpp(104,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Duy\OneDrive\Desktop\DSA (LT)\String Matching Project\Rabin-Karp\Rabin-Karp\AhoCorasick.cpp(106,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  BoyerMoore.cpp
+C:\Users\Duy\OneDrive\Desktop\DSA (LT)\String Matching Project\Rabin-Karp\Rabin-Karp\BoyerMoore.cpp(14,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Duy\OneDrive\Desktop\DSA (LT)\String Matching Project\Rabin-Karp\Rabin-Karp\BoyerMoore.cpp(14,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Duy\OneDrive\Desktop\DSA (LT)\String Matching Project\Rabin-Karp\Rabin-Karp\BoyerMoore.cpp(16,39): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Duy\OneDrive\Desktop\DSA (LT)\String Matching Project\Rabin-Karp\Rabin-Karp\BoyerMoore.cpp(21,26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  BruteForce.cpp
+C:\Users\Duy\OneDrive\Desktop\DSA (LT)\String Matching Project\Rabin-Karp\Rabin-Karp\BruteForce.cpp(12,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Duy\OneDrive\Desktop\DSA (LT)\String Matching Project\Rabin-Karp\Rabin-Karp\BruteForce.cpp(13,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Duy\OneDrive\Desktop\DSA (LT)\String Matching Project\Rabin-Karp\Rabin-Karp\BruteForce.cpp(17,17): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  KMP.cpp
+C:\Users\Duy\OneDrive\Desktop\DSA (LT)\String Matching Project\Rabin-Karp\Rabin-Karp\KMP.cpp(9,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Duy\OneDrive\Desktop\DSA (LT)\String Matching Project\Rabin-Karp\Rabin-Karp\KMP.cpp(24,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Duy\OneDrive\Desktop\DSA (LT)\String Matching Project\Rabin-Karp\Rabin-Karp\KMP.cpp(25,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  main.cpp
+  RabinKarp.cpp
+C:\Users\Duy\OneDrive\Desktop\DSA (LT)\String Matching Project\Rabin-Karp\Rabin-Karp\RabinKarp.cpp(11,27): warning C4244: 'initializing': conversion from 'double' to '__int64', possible loss of data
+C:\Users\Duy\OneDrive\Desktop\DSA (LT)\String Matching Project\Rabin-Karp\Rabin-Karp\RabinKarp.cpp(24,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Duy\OneDrive\Desktop\DSA (LT)\String Matching Project\Rabin-Karp\Rabin-Karp\RabinKarp.cpp(24,26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+  Rabin-Karp.vcxproj -> C:\Users\Duy\OneDrive\Desktop\DSA (LT)\String Matching Project\Rabin-Karp\x64\Debug\main.exe
