@@ -11,12 +11,12 @@ void naive(const vector<vector<char>>& grid, const vector<string>& pattern, vect
 // Rabin-Karp
 long long binpow(long long a, long long b);
 void RabinKarp(string str, string pattern, long long& count_comparisons, int row, int col, bool isHorizontal, string& pos);
-void RabinKarp2D(int R, int C, vector<vector<char>> grid, vector<string> pattern, vector<string>& pos, long long& total_comparisons);
+void RabinKarp2D(int R, int C, const vector<vector<char>>& grid, const vector<string>& pattern, vector<string>& pos, long long& total_comparisons);
 
 // KMP
 vector<int> computePrefixFunction(const string& P);
 void KMP(const string& str, const string& pattern, long long& total_comparisons, int row, int col, bool isHorizontal, string& strPos);
-void KMP2D(int R, int C, vector<vector<char>> grid, vector<string> pattern, vector<string>& pos, long long& total_comparisons);
+void KMP2D(int R, int C, const vector<vector<char>>& grid, const vector<string>& pattern, vector<string>& pos, long long& total_comparisons);
 
 // Boyer-Moore
 string formatPos(int r1, int c1, int r2, int c2);

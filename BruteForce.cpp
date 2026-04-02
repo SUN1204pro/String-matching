@@ -41,6 +41,7 @@ void naive(const vector<vector<char>>& grid, const vector<string>& pattern, vect
                 }
             }
         }
-        ans.push_back(result);
+        if (result == "") ans.push_back("not found");
+        else ans.push_back(result);
     }
 }

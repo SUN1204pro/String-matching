@@ -130,7 +130,7 @@ void Aho_Corasick(const vector<vector<char>>& grid, const vector<string>& querie
         Aho_Corasick_SEARCH(text_fwd, coords_fwd, queries, ans, comparison);
     }
 
-    for (size_t i = 0; i < queries.size(); i++) {
+    for (int i = 0; i < queries.size(); i++) {
         if (ans[i].empty()) ans[i] = "not found";
     }
 }

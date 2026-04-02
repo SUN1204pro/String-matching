@@ -1,7 +1,105 @@
-test: (0, 0) -> (0, 3); (0, 0) -> (3, 0); 
-bug: not found
+gkubsw: (14, 53) -> (14, 58); 
+nhkf: (60, 26) -> (60, 29); 
+pywhip: (65, 92) -> (70, 92); 
+wgn: (42, 7) -> (42, 9); 
+eevz: (83, 78) -> (86, 78); 
+vroepdg: (84, 4) -> (90, 4); 
+iclemunx: (61, 30) -> (68, 30); 
+emgku: (43, 53) -> (43, 57); 
+bmmpz: (89, 23) -> (93, 23); 
+tojj: (50, 61) -> (53, 61); 
+rbdktov: (82, 48) -> (82, 54); 
+vwurcl: (10, 77) -> (15, 77); 
+zsrujhe: (83, 20) -> (89, 20); 
+acsclyn: (62, 64) -> (68, 64); 
+ffqnnuya: (26, 7) -> (33, 7); 
+pdthp: (91, 51) -> (95, 51); 
+lptpn: (30, 82) -> (30, 86); 
+qjlwvo: (67, 83) -> (67, 88); 
+zvosxh: (66, 29) -> (71, 29); 
+cdkpmyt: (15, 48) -> (15, 54); 
+gpbey: (80, 68) -> (84, 68); 
+wnpsr: (56, 48) -> (56, 52); 
+nnyo: (24, 74) -> (24, 77); 
+ewtcifr: (26, 34) -> (26, 40); 
+lhyj: (25, 62) -> (28, 62); 
+hvqscury: (39, 55) -> (39, 62); 
+hvoxp: (77, 85) -> (81, 85); 
+qxpbcm: (70, 15) -> (70, 20); 
+fnd: (49, 6) -> (49, 8); (28, 73) -> (30, 73); 
+dpyjfogs: (62, 18) -> (69, 18); 
+fogvdl: (26, 7) -> (26, 12); 
+wcfx: (72, 84) -> (72, 87); 
+bipmtpa: (22, 6) -> (22, 12); 
+bfvwu: (36, 21) -> (40, 21); 
+ibj: (51, 4) -> (51, 6); (53, 26) -> (53, 28); (94, 62) -> (94, 64); 
+oumsocx: (44, 99) -> (50, 99); 
+hgr: (99, 33) -> (99, 35); 
+zqqvv: (83, 69) -> (87, 69); 
+jts: (90, 11) -> (92, 11); (9, 97) -> (11, 97); 
+dks: (24, 33) -> (24, 35); (41, 36) -> (41, 38); (15, 75) -> (17, 75); 
+effpet: (1, 1) -> (6, 1); 
+hxoudplb: (57, 82) -> (64, 82); 
+mqtpjpij: (46, 55) -> (46, 62); 
+ltco: (50, 16) -> (53, 16); 
+bpipc: (53, 98) -> (57, 98); 
+vxbnpt: (11, 87) -> (11, 92); 
+loasmplf: (16, 93) -> (23, 93); 
+ncyak: (99, 5) -> (99, 9); 
+givlkj: (47, 85) -> (47, 90); 
+jsml: (3, 43) -> (3, 46); 
+jkbrrcg: not found
+silabjr: not found
+wvfjn: not found
+hvjdti: not found
+mbfrlqj: not found
+dzh: (48, 23) -> (50, 23); 
+gqdo: not found
+knccwqeh: not found
+icrbhun: not found
+sgvrte: not found
+wmeehhg: not found
+xjruszb: not found
+kzr: not found
+ppdemm: not found
+rvl: (60, 5) -> (60, 7); (98, 38) -> (98, 40); 
+hshzpn: not found
+xnhnmmao: not found
+xgef: not found
+noxdbbsr: not found
+xttn: not found
+ewufwl: not found
+xnhwipd: not found
+sxrfigf: not found
+ndjwf: not found
+qqcgpnl: not found
+izc: (60, 86) -> (60, 88); (2, 91) -> (4, 91); 
+kjeldhip: not found
+rxzzd: not found
+soinex: not found
+nhvmeqlk: not found
+lmigvxb: not found
+sgmavori: not found
+nxhewv: not found
+ispbsq: not found
+mgqprt: not found
+djeafiem: not found
+muscegq: not found
+smzdxsg: not found
+qtnr: not found
+oss: not found
+bmrre: not found
+pmccewb: not found
+vfeiyb: not found
+fwprjh: not found
+hnsxr: not found
+efoxepar: not found
+zyjdjbyz: not found
+mmay: not found
+haus: not found
+ndgs: not found
 
 --------------------------------
-Algorithm: KMP
-Comparisons: 68
-Execution Time: 0.03 ms
+Algorithm: Rabin-Karp
+Comparisons: 1905200
+Execution Time: 43.57 ms

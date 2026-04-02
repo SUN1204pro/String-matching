@@ -34,22 +34,11 @@ void RabinKarp(string str, string pattern, long long& count_comparisons, int row
 	for (int i = 0; i <= n - m; ++i) {
 		++count_comparisons;
 		if (hashstr == hashpat) {
-			bool isEqual = true;
-			for (int j = 0; j < m; ++j) {
-				++count_comparisons;
-				if (str[i + j] != pattern[j]) {
-					isEqual = false;
-					break;
-				}
+			if (isHorizontal) {
+				pos += '(' + to_string(row) + ", " + to_string(col + i) + ") -> (" + to_string(row) + ", " + to_string(col + i + m - 1) + "); ";
 			}
-
-			if (isEqual) {
-				if (isHorizontal) {
-					pos += '(' + to_string(row) + ", " + to_string(col + i) + ") -> (" + to_string(row) + ", " + to_string(col + i + m - 1) + "); ";
-				}
-				else {
-					pos += '(' + to_string(row + i) + ", " + to_string(col) + ") -> (" + to_string(row + i + m - 1) + ", " + to_string(col) + "); ";
-				}
+			else {
+				pos += '(' + to_string(row + i) + ", " + to_string(col) + ") -> (" + to_string(row + i + m - 1) + ", " + to_string(col) + "); ";
 			}
 		}
 
